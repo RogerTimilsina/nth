@@ -1,13 +1,14 @@
 from menu import Menu, MenuItem
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
-
+from logo import logo
 menu = Menu()
 menu_item = MenuItem
 coffee_maker = CoffeeMaker()
 money_machine = MoneyMachine()
 
 is_on = True
+print(logo)
 while is_on:
 
     print("--- Coffee Machine ---")
