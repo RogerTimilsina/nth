@@ -1,6 +1,6 @@
-# ALL my personal python projects
+# projects
 
-***a complete list of small projects that I made during my journey of learning python.***
+***a complete list of cool projects as days go by.***
 
-> for big projects I'll make a separate repos. 
+> for big projects, separate repos. 
 ---
