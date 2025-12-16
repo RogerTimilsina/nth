@@ -1,7 +1,7 @@
 import turtle as t
 import random
 
-is_race_on = True
+is_race_on = False
 screen = t.Screen()
 screen.setup(width=600, height=500)
 screen.bgcolor("black")
@@ -21,7 +21,7 @@ for i, color in enumerate(colors):
     turt.goto(-260, yaxis[i])
     turtles.append(turt)
 
-if user_bet:
+if user_bet and user_bet != "off":
     is_race_on = True
 
 winner = ''
