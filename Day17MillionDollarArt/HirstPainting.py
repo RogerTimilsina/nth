@@ -51,6 +51,7 @@ for i in range(10):
         tim.dot(30, random.choice(colors))
         tim.penup()
         tim.forward(50)
+
     # change line
     change_line(tim)
 
