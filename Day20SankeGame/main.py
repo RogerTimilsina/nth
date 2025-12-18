@@ -45,10 +45,11 @@ while not game_over:
         game_over = True
 
     # Detect collision with its own tail
-    for segment in snake.segments:
-        if segment == snake.head:
-            pass
-        elif snake.head.distance(segment) < 10:
+    for segment in snake.segments[1:]: # [1:] gives everything in the list except the [0] pos i.e. head
+        # This code block is used when snake.segments[1:] is not used.
+        # if segment == snake.head:
+        #     pass
+        if snake.head.distance(segment) < 10:
             scoreboard.game_over()
             game_over = True
 screen.exitonclick()

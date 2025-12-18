@@ -6,7 +6,7 @@ class Scoreboard(Turtle):
         super().__init__()
         self.hideturtle()
         self.pencolor('white')
-        self.speed('fastest')
+        self.speed(0)
         self.goto(0,270)
         self.score = 0
         self.update()
