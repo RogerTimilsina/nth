@@ -1,41 +1,48 @@
-import turtle
-import paddle
-import ball
+from turtle import Screen, Turtle
+from paddle import Paddle
+from ball import Ball
+from scoreboard import Scoreboard
 import time
 
-screen = turtle.Screen()
-screen.setup(800, 600)
-screen.colormode(255)
-screen.bgcolor('black')
-screen.title('Pong')
+screen = Screen()
+screen.bgcolor("black")
+screen.setup(width=800, height=600)
+screen.title("Pong")
 screen.tracer(0)
 
-paddle1 = paddle.Paddle((-350, 0))
-paddle2 = paddle.Paddle((350, 0))
-ball = ball.Ball((0, 0))
+r_paddle = Paddle((350, 0))
+l_paddle = Paddle((-350, 0))
+ball = Ball()
+scoreboard = Scoreboard()
 
-screen.update()
 screen.listen()
-screen.onkeypress(paddle1.up, 'w')
-screen.onkeypress(paddle1.down, 's')
-screen.onkeypress(paddle2.up, 'Up')
-screen.onkeypress(paddle2.down, 'Down')
+screen.onkeypress(r_paddle.go_up, "Up")
+screen.onkeypress(r_paddle.go_down, "Down")
+screen.onkeypress(l_paddle.go_up, "w")
+screen.onkeypress(l_paddle.go_down, "s")
 
-is_gameon = True
-while is_gameon:
-    # detect collision with wall
-    if ball.ycor() > 290 or ball.ycor() < -290:
+game_is_on = True
+while game_is_on:
+    time.sleep(0.009)
+    screen.update()
+    ball.move()
+
+    # Detect collision with wall
+    if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce_y()
 
-    # detect collision with side wall and add score
-    if ball.xcor() > 380:
-        ball.reset()
-    if ball.xcor() < -380:
-        ball.reset()
-
-    # detect collision with the paddle
-    if (ball.distance(paddle1) < 50 and ball.xcor() < 340) or (ball.distance(paddle2) < 50 and ball.xcor() > - 340):
+    # Detect collision with paddle
+    if ball.distance(r_paddle) < 50 and ball.xcor() > 320 or ball.distance(l_paddle) < 50 and ball.xcor() < -320:
         ball.bounce_x()
-    ball.move()
-    screen.update()
-    time.sleep(0.03)
+
+    # Detect R paddle misses
+    if ball.xcor() > 380:
+        ball.reset_position()
+        scoreboard.l_point()
+
+    # Detect L paddle misses:
+    if ball.xcor() < -380:
+        ball.reset_position()
+        scoreboard.r_point()
+
+screen.exitonclick()
