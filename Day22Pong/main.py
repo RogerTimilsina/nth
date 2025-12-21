@@ -45,4 +45,13 @@ while game_is_on:
         ball.reset_position()
         scoreboard.r_point()
 
+    if scoreboard.l_score == 10 or scoreboard.r_score == 10:
+        ball.clear()
+        l_paddle.clear()
+        r_paddle.clear()
+        scoreboard.clear()
+        scoreboard.game_over()
+        game_is_on = False
+        screen.update()
+
 screen.exitonclick()
