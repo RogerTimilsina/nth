@@ -8,12 +8,11 @@ print(logo)
 # Create a variable called 'lives' to keep track of the number of lives left.
 lives = 6
 end_of_game = False
-word_length = chosen_word.__len__()
+word_length = len(chosen_word)
 
 # Create blanks
-display = []
-for i in range(word_length):
-    display += "_"
+display = ["_"] * word_length
+
 
 print(display)
 print(stages[lives])
