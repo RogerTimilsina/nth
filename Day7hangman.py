@@ -20,11 +20,13 @@ print(stages[lives])
 while not end_of_game:
     guess = input("Guess a letter :\n").lower()
 
-    for j in range(0, word_length):
-        if guess == chosen_word[j]:
-            display[j] = guess
     if guess in display:
         print(f"You have already guessed the letter {guess}")
+    else:
+        for j in range(0, word_length):
+            if guess == chosen_word[j]:
+                display[j] = guess
+
     if guess not in chosen_word:
         lives -= 1
         print(f"You have guessed the letter {guess}. That's not in the word. You lose a life.")
