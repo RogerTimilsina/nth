@@ -37,6 +37,8 @@ while score < len(states_list):
         print(f"states to learn: {missing_states}")
         new_data.to_csv("states_to_learn.csv")
         break
+    elif ans_state in guessed_states:
+        pass
     elif ans_state in states_list:
         write_state()
         guessed_states.append(ans_state)
